@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+	<div id="app">		
+		<div id="header" :style="{backgroundColor: mensajes.headerColor}">
+		<h1>The Great <br>
+			<span id="colorDisplay">{{pickedColor}}</span>
+				<br>
+				Guessing Game</h1>
+		</div>
+
+		<div id="navigator">
+			<button id="reset" @click="reset()"> {{mensajes.restartButton}}</button>
+			<span id="message"> {{mensajes.messageDisplay}} </span>
+
+
+			<button id="easy" @click="easy()" :class="{'selected': !isHard}">easy</button>
+			<button id="hard" @click="hard()" :class="{'selected': isHard}">hard</button>
+		</div>
+
+		<div id="container">
+			<square 
+				:mensajes="mensajes"
+				:square="square"
+				:set-all-colors-to="setAllColorsTo"
+				:picked-color="pickedColor"
+				v-for="(square,index) in squares"
+				class="square"
+				:key="index"
+			></square>
+		</div>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+	<script src="rgbgameVue.js"></script>  
+		
+</body>
+
+</html>    
